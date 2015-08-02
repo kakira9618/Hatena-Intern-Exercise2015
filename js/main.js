@@ -20,3 +20,35 @@ function parseLTSVLog(logStr) {
 	}
 	return ret;
 }
+
+// 課題 JS-2: 関数 `createLogTable` を記述してください
+function createLogTable(obj, logdata) {
+	var table = document.createElement("table");
+	var thead = document.createElement("thead");
+	var tr_thead = document.createElement("tr");
+	var th_path = document.createElement("th");
+	var th_epoch = document.createElement("th");
+	var tbody = document.createElement("tbody");
+	th_path.textContent = "path";
+	th_epoch.textContent = "epoch";
+
+	for(var i = 0; i < logdata.length; i++) {
+		var tr = document.createElement("tr");
+		var td_path = document.createElement("td");
+		var td_epoch = document.createElement("td");
+		td_path.textContent = logdata[i]['path'];
+		td_epoch.textContent = logdata[i]['epoch'];
+
+		tbody.appendChild(tr);
+		tr.appendChild(td_path);
+		tr.appendChild(td_epoch);
+	}
+
+	obj.appendChild(table);
+	table.appendChild(thead);
+	thead.appendChild(tr_thead);
+	tr_thead.appendChild(th_path);
+	tr_thead.appendChild(th_epoch);
+	table.appendChild(tbody);
+	
+}
