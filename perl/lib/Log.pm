@@ -46,16 +46,17 @@ sub time {
 	return gmtime($self->{epoch})->strftime("%Y-%m-%dT%H:%M:%S");
 }
 
+# 課題2用
 sub to_hash {
 	my $self = shift;
 
-    my %hash = map {
-       $self->{$_} ? ($_, $self->{$_}) : ();
+	my %hash = map {
+		$self->{$_} ? ($_, $self->{$_}) : ();
     } ('status', 'size', 'user', 'referer');
-    $hash{'method'} = $self->method();
-    $hash{'uri'} = $self->uri();
-    $hash{'time'} = $self->time();
-    return \%hash;
+	$hash{'method'} = $self->method();
+	$hash{'uri'} = $self->uri();
+	$hash{'time'} = $self->time();
+	return \%hash;
 }
 
 1;
