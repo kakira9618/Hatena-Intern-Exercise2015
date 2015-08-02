@@ -28,7 +28,9 @@ function parseLTSVLog(logStr) {
 }
 
 // 課題 JS-2: 関数 `createLogTable` を記述してください
-function createLogTable(obj, logdata) {
+// evflag : 作る表にマウスイベント系の機能を入れるか
+function createLogTable(obj, logdata, evflag) {
+	if(typeof evflag === 'undefined') evflag = false;
 	for(var i = 0; i < obj.childNodes.length; i++) {
 		obj.removeChild(obj.childNodes[i]);
 	}
@@ -51,6 +53,12 @@ function createLogTable(obj, logdata) {
 		var tr = document.createElement("tr");
 		for(var j = 0; j < keys.length; j++) {
 			var td = document.createElement("td");
+			if (evflag) {
+				td.addEventListener("mouseenter", hilight, false);
+				td.addEventListener("mouseleave", disable_hilight, false);
+				td.addEventListener("click", setCond, false);
+				td.setAttribute('class', keys[j]);
+			}
 			td.textContent = logdata[i][keys[j]];
 			tr.appendChild(td);
 		}

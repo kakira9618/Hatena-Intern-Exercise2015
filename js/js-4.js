@@ -1,4 +1,40 @@
 //JS4
+
+// マウスオーバーされたマスをハイライト
+function hilight(ev) {
+	ev.currentTarget.style.backgroundColor="yellow";
+}
+
+// ハイライトされたマスを元に戻す
+function disable_hilight(ev) {
+	ev.currentTarget.style.backgroundColor="";
+}
+
+// マウスクリックしたマスから検索条件をコピー
+function setCond(ev) {
+	var key = ev.currentTarget.className;
+	var value = ev.currentTarget.innerHTML;
+
+	document.getElementById('key-name1').value = key;
+	document.getElementById('value-name1').value = value;
+	document.getElementById('mode1').value = "0";
+	document.getElementById('exsearch-valid').checked = false;
+	change_exsearch_form_state(document.getElementById('exsearch-valid'));
+}
+
+// 検索条件を初期状態に戻す。
+function clearCond() {
+	document.getElementById('key-name1').value = "";
+	document.getElementById('value-name1').value = "";
+	document.getElementById('mode1').value = "0";
+	document.getElementById('exsearch-valid').checked = false;
+	change_exsearch_form_state(document.getElementById('exsearch-valid'));
+	document.getElementById('key-name2').value = "";
+	document.getElementById('value-name2').value = "";
+	document.getElementById('mode2').value = "0";
+}
+
+
 //検索結果を表示
 function displayTable() {
 	var div = document.getElementById('table-container');
@@ -33,7 +69,7 @@ function displayTable() {
 		}
 	}
 	
-	createLogTable(div, logdata);
+	createLogTable(div, logdata, true);
 }
 
 //検索条件
