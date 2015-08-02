@@ -8,7 +8,7 @@ function parseLTSVLog(logStr) {
 		var columns = logs[i].split(/\t/);
 		var object = { };
 		for(var j = 0; j < columns.length; j++) {
-			var data = columns[j].match(/(.*?):(.*)$/);
+			var data = columns[j].match(/(.*?):(.*)$/); //1つめの:の前後で分ける。
 			var key = data[1];
 			var value = data[2];
 			if (key == 'epoch') {

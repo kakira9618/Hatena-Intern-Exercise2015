@@ -1,4 +1,5 @@
 //JS4
+//検索結果を表示
 function displayTable() {
 	var div = document.getElementById('table-container');
 	var loginput = document.getElementById('log-input');
@@ -35,6 +36,7 @@ function displayTable() {
 	createLogTable(div, logdata);
 }
 
+//検索条件
 function predicator(v1, v2, mode) {
 	if (mode == "0") { //完全一致
 		return v1 == v2;
@@ -47,6 +49,7 @@ function predicator(v1, v2, mode) {
 	}
 }
 
+//追加検索のチェックに応じてフォーム状態を有効/無効に
 function change_exsearch_form_state(chkbox) {
 	var key2 = document.getElementById('key-name2');
 	var value2 = document.getElementById('value-name2');
