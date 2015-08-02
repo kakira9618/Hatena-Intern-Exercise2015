@@ -4,8 +4,8 @@ use warnings;
 use Time::Piece;
 
 sub new {
-    my ($class, %args) = @_;
-    return bless \%args, $class;
+	my ($class, %args) = @_;
+	return bless \%args, $class;
 }
 
 # myself->{req} を解析した結果をハッシュで返す

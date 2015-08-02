@@ -4,8 +4,8 @@ use warnings;
 use Log;
 
 sub new {
-    my ($class, %args) = @_;
-    return bless \%args, $class;
+	my ($class, %args) = @_;
+	return bless \%args, $class;
 }
 
 # LTSVデータを読み、データの1行を1つの要素とするリストへのリファレンスを返す。

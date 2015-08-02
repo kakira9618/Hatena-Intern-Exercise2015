@@ -3,8 +3,8 @@ use strict;
 use warnings;
 
 sub new {
-    my ($class, $logs) = @_;
-    return bless { logs => $logs }, $class;
+	my ($class, $logs) = @_;
+	return bless { logs => $logs }, $class;
 };
 
 sub group_by_user {
@@ -17,11 +17,10 @@ sub group_by_user {
 		} else {
 			$user = 'guest';
 		}
-		if (exists($result{$user})) {
-			push @{$result{$user}}, $_;
-		} else {
-			$result{$user} = [$_];
+		if (not exists($result{$user})) {
+			$result{$user} = [];
 		}
+		push @{$result{$user}}, $_;
 	}
 	return \%result;
 }
