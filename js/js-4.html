@@ -4,11 +4,37 @@
   <meta charset="UTF-8" />
   <title>Hatena-Intern-Exercise : JavaScript</title>
   <link rel="stylesheet" href="js-4.css" />
+  <script type="text/javascript" src="./lib/jquery-1.11.3.min.js"></script>
 </head>
 <body>
   <section>
     <h1>JavaScript 事前課題</h1>
     <h2>課題 JS-4 : 課題 JS-3 で作成したものに、ログの検索機能を実装</h2>
+
+    <label for="key-name1">key : </label><input type="text" id="key-name1" value="" /><br />
+    <label for="value-name1">value : </label><input type="text"  id="value-name1" value="" /><br />
+    <select id="mode1">
+      <option value="0">完全一致</option>
+      <option value="1">不一致</option>
+      <option value="2">含まれている</option>
+      <option value="3">含まれていない</option>
+    </select><br />
+    <input type="checkbox" value=false id="exsearch-valid" onChange="change_exsearch_form_state(this);"><label for="exsearch-valid">追加検索</label><br />
+    <select id="way" disabled>
+      <option value="and">かつ</option>
+      <option value="or">または</option>
+    </select>
+    <br />
+    <label for="key-name2">key : </label><input type="text" id="key-name2" value="" disabled/><br />
+    <label for="value-name2">value : </label><input type="text" id="value-name2" value="" disabled/><br />
+    <select id="mode2" disabled>
+      <option value="0">完全一致</option>
+      <option value="1">不一致</option>
+      <option value="2">含まれている</option>
+      <option value="3">含まれていない</option>
+    </select><br />
+    <br />
+
    <div>
       <textarea id="log-input" cols="64" rows="10">host:127.0.0.1&#x0009;user:frank&#x0009;epoch:1372694390&#x0009;req:GET /apache_pb.gif HTTP/1.0&#x0009;status:200  size:2326&#x0009;referer:http://www.hatena.ne.jp/
 host:127.0.0.1&#x0009;user:john&#x0009;epoch:1372794390&#x0009;req:GET /apache_pb.gif HTTP/1.0&#x0009;status:200  size:1234&#x0009;referer:http://b.hatena.ne.jp/hotentry

@@ -19,9 +19,8 @@ function parseLTSVLog(logStr) {
 				object["method"] = req[0];
 				object["path"] = req[1];
 				object["protocol"] = req[2];
-			} else {
-				object[key] = value;
 			}
+			object[key] = value;
 		}
 		ret.push(object);
 	}
