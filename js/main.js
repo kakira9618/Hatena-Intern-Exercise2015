@@ -8,13 +8,20 @@ function parseLTSVLog(logStr) {
 		var columns = logs[i].split(/\t/);
 		var object = { };
 		for(var j = 0; j < columns.length; j++) {
-			var data = columns[j].match(/(.*):(.*)$/);
+			var data = columns[j].match(/(.*?):(.*)$/);
 			var key = data[1];
 			var value = data[2];
-			if (!isNaN(parseInt(value))) {
+			if (key == 'epoch') {
 				value = parseInt(value);
 			}
-			object[key] = value;
+			if (key == 'req') {
+				var req = value.split(/ /);
+				object["method"] = req[0];
+				object["path"] = req[1];
+				object["protocol"] = req[2];
+			} else {
+				object[key] = value;
+			}
 		}
 		ret.push(object);
 	}

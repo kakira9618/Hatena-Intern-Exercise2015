@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hatena-Intern-Exercise : JavaScript</title>
+  <link rel="stylesheet" href="js-4.css" />
+</head>
+<body>
+  <section>
+    <h1>JavaScript 事前課題</h1>
+    <h2>課題 JS-4 : 課題 JS-3 で作成したものに、ログの検索機能を実装</h2>
+   <div>
+      <textarea id="log-input" cols="64" rows="10">host:127.0.0.1&#x0009;user:frank&#x0009;epoch:1372694390&#x0009;req:GET /apache_pb.gif HTTP/1.0&#x0009;status:200  size:2326&#x0009;referer:http://www.hatena.ne.jp/
+host:127.0.0.1&#x0009;user:john&#x0009;epoch:1372794390&#x0009;req:GET /apache_pb.gif HTTP/1.0&#x0009;status:200  size:1234&#x0009;referer:http://b.hatena.ne.jp/hotentry
+host:127.0.0.1&#x0009;user:-&#x0009;epoch:1372894390&#x0009;req:GET /apache_pb.gif HTTP/1.0&#x0009;status:503  size:9999&#x0009;referer:http://www.example.com/start.html
+host:127.0.0.1&#x0009;user:frank&#x0009;epoch:1372694390&#x0009;req:GET /apache_pb.gif HTTP/1.0&#x0009;status:500  size:2326&#x0009;referer:http://www.hatena.ne.jp/
+host:127.0.0.1&#x0009;user:frank&#x0009;epoch:1372794395&#x0009;req:GET /notfound.gif HTTP/1.0&#x0009;status:404  size:100&#x0009;referer:-
+
+</textarea>
+      <div><input value="表に出力する" type="button" id="submit-button" onClick="displayTable();"/></div>
+    </div>
+    <div id="table-container"></div>
+  </section>
+  <script src="main.js"></script>
+  <script src="js-4.js"></script>
+</body>
+</html>
