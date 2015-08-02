@@ -52,7 +52,7 @@ sub to_hash {
 
 	my %hash = map {
 		$self->{$_} ? ($_, $self->{$_}) : ();
-    } ('status', 'size', 'user', 'referer');
+	} ('status', 'size', 'user', 'referer');
 	$hash{'method'} = $self->method();
 	$hash{'uri'} = $self->uri();
 	$hash{'time'} = $self->time();
