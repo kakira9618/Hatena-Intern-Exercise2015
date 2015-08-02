@@ -30,32 +30,40 @@ function parseLTSVLog(logStr) {
 
 // 課題 JS-2: 関数 `createLogTable` を記述してください
 function createLogTable(obj, logdata) {
+	for(var i = 0; i < obj.childNodes.length; i++) {
+		obj.removeChild(obj.childNodes[i]);
+	}
+	if (logdata.length == 0) return;
+
+	var keys = Object.keys(logdata[0]);
+
 	var table = document.createElement("table");
 	var thead = document.createElement("thead");
 	var tr_thead = document.createElement("tr");
-	var th_path = document.createElement("th");
-	var th_epoch = document.createElement("th");
+	
+	for(var i = 0; i < keys.length; i++) {
+		var th = document.createElement("th");
+		th.textContent = keys[i];
+		tr_thead.appendChild(th);
+	}
 	var tbody = document.createElement("tbody");
-	th_path.textContent = "path";
-	th_epoch.textContent = "epoch";
-
+	
 	for(var i = 0; i < logdata.length; i++) {
 		var tr = document.createElement("tr");
+		for(var j = 0; j < keys.length; j++) {
+			var td = document.createElement("td");
+			td.textContent = logdata[i][keys[j]];
+			tr.appendChild(td);
+		}
 		var td_path = document.createElement("td");
 		var td_epoch = document.createElement("td");
-		td_path.textContent = logdata[i]['path'];
-		td_epoch.textContent = logdata[i]['epoch'];
-
+		
 		tbody.appendChild(tr);
-		tr.appendChild(td_path);
-		tr.appendChild(td_epoch);
 	}
 
 	obj.appendChild(table);
 	table.appendChild(thead);
 	thead.appendChild(tr_thead);
-	tr_thead.appendChild(th_path);
-	tr_thead.appendChild(th_epoch);
 	table.appendChild(tbody);
 	
 }
