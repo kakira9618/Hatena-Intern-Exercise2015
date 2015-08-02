@@ -8,9 +8,28 @@ sub new {
 };
 
 sub group_by_user {
+	my $self = shift;
+	my %result;
+	foreach (@{$self->{logs}}) {
+		my $user;
+		if ($_->{user}) {
+			$user = $_->{user};
+		} else {
+			$user = 'guest';
+		}
+		if (exists($result{$user})) {
+			push @{$result{$user}}, $_;
+		} else {
+			$result{$user} = [$_];
+		}
+	}
+	return \%result;
 }
 
 sub count_error {
+	my $self = shift;
+	my @errors = grep { $_->{status} =~ /^5/ } @{$self->{logs}};
+	return $#errors + 1;
 }
 
 1;
